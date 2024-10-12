@@ -1,0 +1,37 @@
+base-command-message:
+  no-permission: "&cYou don't have permission to use this command."
+  no-console: "&cThis command can only be executed by players."
+
+dedsafio-command-message:
+  help:
+    - "&7&m-------------------------"
+    - "&b&lDedsafio Commands"
+    - ""
+    - " &7▶ &3/dedsafio reload &7- &fReload the plugin."
+    - " &7▶ &3/dedsafio reset &7- &fReset the database."
+    - "&7&m-------------------------"
+  reload: "&aDedsafio has been reloaded!"
+  reset: "&aDedsafio database has been reset!"
+
+animation-command-message:
+  help:
+    - "&7&m-------------------------"
+    - "&b&lAnimation Commands"
+    - ""
+    - " &7▶ &3/animation ruleta <color> <all/player> &7- &fEnvia la ruleta a los jugadores."
+    - " &7▶ &3/animation muerte <all/player> &7- &fEnvia una animacón de muerte a estos jugadores."
+    - "&7&m-------------------------"
+
+ruleta:
+  green:
+    - "&2&l• NOTIFICACIONES:"
+    - ""
+    - "&a{text}"
+  blue:
+    - "&9&l• NOTIFICACIONES:"
+    - ""
+    - "&9{text}"
+  red:
+    - "&c&l• NOTIFICACIONES:"
+    - ""
+    - "&c{text}"
