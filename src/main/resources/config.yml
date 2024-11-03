@@ -1,0 +1,43 @@
+# Events Settings
+on-totem-use:
+  enabled: true
+  message: "&6&l{player} &r&eha consumido un tótem!"
+
+on-join:
+  enabled: true
+  message: "\uE974 &2{player} se ha conectado"
+
+on-leave:
+  enabled: true
+  message: "\uE977 &7{player} se ha desconectado"
+
+# Global Settings
+time-controller:
+  enabled: true
+  title: "Cierre en: {seconds} segundos"
+  open-server: "12:00"
+  close-server: "22:05"
+  bossbar-in: 300
+  kick:
+    enabled: true
+    bypass-permission: "dedsafio.no_kick"
+    message: "El servidor ha cerrado."
+
+death-system:
+  enabled: true
+  message: "&4&l{deathMessage}"
+  bypass-permission: "dedsafio.bypass_death"
+  immediate-respawn: true
+  animation:
+    enabled: true
+    position: "title"
+    show-to: "all" # all/player
+    sound: "dedsafio3:muerte"
+  ban-player:
+    enabled: true
+    after-seconds: 10
+    message: "&6&lGG"
+
+# Dedsafio Settings
+
+charged-creepers: true

@@ -16,7 +16,9 @@ public class ResourceManager {
   public ResourceManager(DedsafioPlugin plugin) {
     this.plugin = plugin;
     this.resources = new ArrayList<>();
+
     this.resources.add(new LanguageResource());
+    this.resources.add(new ConfigResource());
 
     this.onRefresh();
   }

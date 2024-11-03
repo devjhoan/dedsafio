@@ -1,0 +1,27 @@
+blue:
+  start: 57344
+  end: 57635
+cyan:
+  start: 57636
+  end: 57922
+green:
+  start: 57923
+  end: 58212
+muerte:
+  start: 58213
+  end: 58304
+orange:
+  start: 58305
+  end: 58591
+pink:
+  start: 58592
+  end: 58885
+purple:
+  start: 58886
+  end: 59179
+red:
+  start: 59180
+  end: 59474
+yellow:
+  start: 59475
+  end: 59762

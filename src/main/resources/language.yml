@@ -8,30 +8,61 @@ dedsafio-command-message:
     - "&b&lDedsafio Commands"
     - ""
     - " &7▶ &3/dedsafio reload &7- &fReload the plugin."
-    - " &7▶ &3/dedsafio reset &7- &fReset the database."
     - "&7&m-------------------------"
   reload: "&aDedsafio has been reloaded!"
-  reset: "&aDedsafio database has been reset!"
 
 animation-command-message:
   help:
     - "&7&m-------------------------"
     - "&b&lAnimation Commands"
     - ""
-    - " &7▶ &3/animation ruleta <color> <all/player> &7- &fEnvia la ruleta a los jugadores."
-    - " &7▶ &3/animation muerte <all/player> &7- &fEnvia una animacón de muerte a estos jugadores."
+    - " &7▶ &3/animation ruleta <title|subtitle|actionbar|sidebar> <color> <all/player> <text>"
+    - " &7▶ &3/animation muerte <title|subtitle|actionbar|sidebar> <all/player>"
     - "&7&m-------------------------"
+  invalid-color:
+    - "&7&m-------------------------"
+    - " &7▶ &3Valid colors - &fgreen, blue, red, purple, orange, pink, cyan, yellow"
+    - "&7&m-------------------------"
+
+tp-command-message:
+  help:
+    - "&7&m-------------------------"
+    - "&b&lTeleportation Commands"
+    - ""
+    - " &7▶ &3/dtp <all/player> <x> <y> <z> <fade-in> <duration> <fade-out>"
+    - "&7&m-------------------------"
+  success: "&aAll the players have been teleported to the location!"
 
 ruleta:
   green:
-    - "&2&l• NOTIFICACIONES:"
+    - "&2&l▪ ɴᴏᴛɪғɪᴄᴀᴄɪᴏɴᴇs:"
     - ""
     - "&a{text}"
   blue:
-    - "&9&l• NOTIFICACIONES:"
+    - "&1&l▪ NOTIFICACIONES:"
     - ""
     - "&9{text}"
   red:
-    - "&c&l• NOTIFICACIONES:"
+    - "&4&l▪ ᴍᴏᴍᴇɴᴛᴏ ʀᴇᴠɪʟ:"
     - ""
     - "&c{text}"
+  purple:
+    - "&5&l▪ ᴅᴇsᴄᴀʟɪғɪᴄᴀᴄɪᴏɴ:"
+    - ""
+    - "&d{text}"
+  orange:
+    - "&6&l▪ ᴄᴀᴍʙɪᴏ ᴅᴇ ᴅɪғɪᴄᴜʟᴛᴀᴅ:"
+    - ""
+    - "&e{text}"
+  pink:
+    - "&5&l▪ ᴍᴏᴍᴇɴᴛᴏ ɴᴜᴛʀɪᴀ:"
+    - ""
+    - "&d{text}"
+  cyan:
+    - "&3&l▪ CAMBIO DE DIFICULTAD:"
+    - ""
+    - "&b{text}"
+  yellow:
+    - "&e&l▪ ᴅᴇᴅᴄɪᴄʟᴏᴘᴇᴅɪᴀ:"
+    - ""
+    - "&e{text}"

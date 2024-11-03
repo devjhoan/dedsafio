@@ -1,6 +1,6 @@
-name: dedsafio-utils
+name: dedsafio
 version: '1.0-SNAPSHOT'
 main: cc.atenea.dedsafioUtils.DedsafioPlugin
-api-version: '1.21'
+api-version: '1.13'
 authors: [ devjhoan ]
 description: utils para recreacion de dedsafio
