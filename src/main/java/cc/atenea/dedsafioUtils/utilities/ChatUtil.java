@@ -58,7 +58,9 @@ public class ChatUtil {
   }
 
   public static void sendMessage(CommandSender sender, String[] array) {
-    Arrays.stream(array).forEach(s -> sender.sendMessage(translate(s)));
+    sender.sendMessage(
+      Arrays.stream(array).map(ChatUtil::translate).collect(Collectors.joining("\n"))
+    );
   }
 
   public static void sendActionBar(Player player, String text) {
