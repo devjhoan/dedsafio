@@ -85,6 +85,8 @@ public final class DedsafioPlugin extends JavaPlugin {
     pluginManager.registerEvents(new BreakWebsSpawnSpiders(), this);
     pluginManager.registerEvents(new EnderpearlHalfHealth(), this);
     pluginManager.registerEvents(new DoorsCausesInstantKill(), this);
+    pluginManager.registerEvents(new PiglinsDropGoldNuggets(), this);
+    pluginManager.registerEvents(new IronGolemsReplacedByWardens(), this);
 
     // Register Items
     ItemManager.registerItem(new EnderBagItem());

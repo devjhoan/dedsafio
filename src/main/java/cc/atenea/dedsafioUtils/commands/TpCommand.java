@@ -1,6 +1,7 @@
 package cc.atenea.dedsafioUtils.commands;
 
 import cc.atenea.dedsafioUtils.DedsafioPlugin;
+import cc.atenea.dedsafioUtils.resources.types.ConfigResource;
 import cc.atenea.dedsafioUtils.resources.types.LanguageResource;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
 import dev.jorel.commandapi.annotations.Command;
@@ -41,7 +42,7 @@ public class TpCommand {
     DedsafioPlugin plugin = DedsafioPlugin.getInstance();
 
     for (Player player : players) {
-      player.sendTitle(ChatUtil.translate("\uE97D"), "", fadeIn, stay, fadeOut);
+      player.sendTitle(ChatUtil.translate(ConfigResource.WhiteScreen), "", fadeIn, stay, fadeOut);
       plugin.getServer().getScheduler().runTaskLater(plugin, () -> player.teleport(location), stay + fadeOut);
     }
 

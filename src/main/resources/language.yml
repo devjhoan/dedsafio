@@ -35,34 +35,34 @@ tp-command-message:
 
 ruleta:
   green:
-    - "\uEA9F &2&l▪ ɴᴏᴛɪғɪᴄᴀᴄɪᴏɴᴇs:"
+    - "{r-green} &2&l▪ ɴᴏᴛɪғɪᴄᴀᴄɪᴏɴᴇs:"
     - ""
     - "&a{text}"
   blue:
-    - "\uEA9C &1&l▪ NOTIFICACIONES:"
+    - "{r-blue} &1&l▪ NOTIFICACIONES:"
     - ""
     - "&9{text}"
   red:
-    - "\uEAA4 &4&l▪ ᴍᴏᴍᴇɴᴛᴏ ʀᴇᴠɪʟ:"
+    - "{r-red} &4&l▪ ᴍᴏᴍᴇɴᴛᴏ ʀᴇᴠɪʟ:"
     - ""
     - "&c{text}"
   purple:
-    - "\uEAA3 &5&l▪ ᴅᴇsᴄᴀʟɪғɪᴄᴀᴄɪᴏɴ:"
+    - "{r-purple} &5&l▪ ᴅᴇsᴄᴀʟɪғɪᴄᴀᴄɪᴏɴ:"
     - ""
     - "&d{text}"
   orange:
-    - "\uEAA1 &6&l▪ ᴄᴀᴍʙɪᴏ ᴅᴇ ᴅɪғɪᴄᴜʟᴛᴀᴅ:"
+    - "{r-orange} &6&l▪ ᴄᴀᴍʙɪᴏ ᴅᴇ ᴅɪғɪᴄᴜʟᴛᴀᴅ:"
     - ""
     - "&e{text}"
   pink:
-    - "\uEAA2 &5&l▪ ᴍᴏᴍᴇɴᴛᴏ ɴᴜᴛʀɪᴀ:"
+    - "{r-pink} &5&l▪ ᴍᴏᴍᴇɴᴛᴏ ɴᴜᴛʀɪᴀ:"
     - ""
     - "&d{text}"
   cyan:
-    - "\uEA9E &3&l▪ ᴍɪsɪᴏɴ ᴅɪᴀʀɪᴀ:"
+    - "{r-cyan} &3&l▪ ᴍɪsɪᴏɴ ᴅɪᴀʀɪᴀ:"
     - ""
     - "&b{text}"
   yellow:
-    - "\uEAA5 &e&l▪ ᴅᴇᴅᴄɪᴄʟᴏᴘᴇᴅɪᴀ:"
+    - "{r-yellow} &e&l▪ ᴅᴇᴅᴄɪᴄʟᴏᴘᴇᴅɪᴀ:"
     - ""
     - "&e{text}"
