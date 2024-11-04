@@ -1,7 +1,8 @@
 package cc.atenea.dedsafioUtils.resources;
 
 import cc.atenea.dedsafioUtils.DedsafioPlugin;
-import cc.atenea.dedsafioUtils.resources.types.*;
+import cc.atenea.dedsafioUtils.resources.types.ConfigResource;
+import cc.atenea.dedsafioUtils.resources.types.LanguageResource;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -15,8 +16,8 @@ public class ResourceManager {
 
   public ResourceManager(DedsafioPlugin plugin) {
     this.plugin = plugin;
-    this.resources = new ArrayList<>();
 
+    this.resources = new ArrayList<>();
     this.resources.add(new LanguageResource());
     this.resources.add(new ConfigResource());
 

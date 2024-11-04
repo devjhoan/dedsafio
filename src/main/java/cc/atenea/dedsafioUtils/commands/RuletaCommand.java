@@ -48,14 +48,28 @@ public class RuletaCommand {
       .toArray(String[]::new);
 
     for (Player player : players) {
-      DedsafioPlugin.getInstance().animations.playAnimation(player, animation, type, "dedsafio3:ruleta");
-      sendRuletaMessage(messageToDisplay, player);
+      var plugin = DedsafioPlugin.getInstance();
+      plugin.animations.playAnimation(player, animation, type, "dedsafio3:ruleta");
+
+      if (color.equals("red") || color.equals("pink")) {
+        Animations nextAnimation = color.equals("red") ? Animations.Reviil : Animations.Nutria;
+        String sound = color.equals("red") ? "dedsafio3:reviil" : "dedsafio3:nutria";
+
+        plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+          plugin.animations.playAnimation(player, nextAnimation, "title", sound);
+          sendRuletaMessage(messageToDisplay, player, color.equals("red") ? 15 : 17);
+        }, 15 * 20L);
+
+        return;
+      }
+
+      sendRuletaMessage(messageToDisplay, player, 15);
     }
   }
 
-  private static void sendRuletaMessage(String[] text, Player player) {
+  private static void sendRuletaMessage(String[] text, Player player, int delay) {
     var plugin = DedsafioPlugin.getInstance();
-    plugin.getServer().getScheduler().runTaskLater(plugin, () -> ChatUtil.sendMessage(player, text), 15 * 20L);
+    plugin.getServer().getScheduler().runTaskLater(plugin, () -> ChatUtil.sendMessage(player, text), delay * 20L);
   }
 
   private static Animations getAnimation(String color) {

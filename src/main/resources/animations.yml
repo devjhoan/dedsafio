@@ -10,18 +10,24 @@ green:
 muerte:
   start: 58213
   end: 58304
-orange:
+nutria:
   start: 58305
-  end: 58591
+  end: 58402
+orange:
+  start: 58403
+  end: 58689
 pink:
-  start: 58592
-  end: 58885
+  start: 58690
+  end: 58983
 purple:
-  start: 58886
-  end: 59179
+  start: 58984
+  end: 59277
 red:
-  start: 59180
-  end: 59474
+  start: 59278
+  end: 59572
+reviil:
+  start: 59573
+  end: 59771
 yellow:
-  start: 59475
-  end: 59762
+  start: 59772
+  end: 60059

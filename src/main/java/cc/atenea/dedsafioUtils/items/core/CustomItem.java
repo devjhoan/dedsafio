@@ -13,6 +13,7 @@ public abstract class CustomItem {
   private final String itemId;
   private final String displayName;
   private final List<String> lore;
+  private final boolean privateItem;
 
   public CustomItem(ItemSettings settings) {
     this.material = settings.material;
@@ -20,6 +21,7 @@ public abstract class CustomItem {
     this.displayName = ChatUtil.translate(settings.displayName);
     this.itemId = settings.itemId;
     this.lore = ChatUtil.translate(settings.lore);
+    this.privateItem = settings.privateItem;
   }
 
   public ItemStack createItem() {
@@ -53,6 +55,10 @@ public abstract class CustomItem {
 
   public Material getMaterial() {
     return material;
+  }
+
+  public boolean isPrivateItem() {
+    return privateItem;
   }
 
   public ItemStack getItemStack() {

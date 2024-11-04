@@ -2,6 +2,7 @@ package cc.atenea.dedsafioUtils.commands;
 
 import cc.atenea.dedsafioUtils.items.core.CustomItem;
 import cc.atenea.dedsafioUtils.items.core.ItemManager;
+import cc.atenea.dedsafioUtils.menus.CustomItemsMenu;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
 import dev.jorel.commandapi.annotations.Command;
 import dev.jorel.commandapi.annotations.Default;
@@ -24,6 +25,7 @@ public class ItemsCommand {
     ChatUtil.sendMessage(sender, new String[]{
       "&7/items list",
       "&7/items give <player> <item>",
+      "&7/items gui"
     });
   }
 
@@ -44,6 +46,12 @@ public class ItemsCommand {
     }
 
     ChatUtil.sendMessage(sender, ChatUtil.NORMAL_LINE);
+  }
+
+  @Subcommand("gui")
+  public static void gui(CommandSender sender) {
+    CustomItemsMenu menu = new CustomItemsMenu();
+    menu.open((Player) sender);
   }
 
   @Subcommand("give")

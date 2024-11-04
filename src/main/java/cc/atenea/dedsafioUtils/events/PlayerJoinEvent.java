@@ -1,5 +1,6 @@
 package cc.atenea.dedsafioUtils.events;
 
+import cc.atenea.dedsafioUtils.DedsafioPlugin;
 import cc.atenea.dedsafioUtils.resources.types.ConfigResource;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
 import org.bukkit.GameMode;
@@ -18,7 +19,13 @@ public class PlayerJoinEvent implements Listener {
     }
 
     if (ConfigResource.WelcomeMessageEnabled) {
-      ChatUtil.broadcast(ConfigResource.WelcomeMessage.replace("{player}", player.getName()));
+      ChatUtil.broadcast(
+        ConfigResource.WelcomeMessage
+          .replace("{player}", player.getName())
+          .replace("{r-color}", ConfigResource.AnnounceColor)
+      );
     }
+
+    DedsafioPlugin.getInstance().userManager.getUser(player.getUniqueId());
   }
 }

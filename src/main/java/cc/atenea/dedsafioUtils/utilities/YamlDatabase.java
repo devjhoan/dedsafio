@@ -1,8 +1,9 @@
 package cc.atenea.dedsafioUtils.utilities;
 
 import cc.atenea.dedsafioUtils.DedsafioPlugin;
-import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
@@ -14,15 +15,18 @@ public class YamlDatabase {
   private final DedsafioPlugin plugin;
   private Map<String, Object> data;
 
-  public YamlDatabase(DedsafioPlugin plugin, String filePath, Map<String, Object> defaultValues) {
+  public YamlDatabase(DedsafioPlugin plugin) {
     this.plugin = plugin;
-    this.file = new File(plugin.getDataFolder(), filePath);
+    this.file = new File(plugin.getDataFolder(), "database.yml");
     this.yaml = new Yaml(setupYamlOptions());
 
     if (file.exists()) {
       load();
     } else {
-      this.data = new HashMap<>(defaultValues);
+      this.data = new HashMap<>(Map.of(
+        "fogata-pos-one", "0,0,0",
+        "fogata-pos-two", "0,0,0")
+      );
       save();
     }
   }
@@ -43,6 +47,10 @@ public class YamlDatabase {
     return data.getOrDefault(key, null);
   }
 
+  public boolean getBoolean(String key) {
+    return (boolean) data.getOrDefault(key, false);
+  }
+
   public Map<String, Object> getAll() {
     return data;
   }
@@ -53,6 +61,11 @@ public class YamlDatabase {
 
   public void delete(String key) {
     data.remove(key);
+  }
+
+  public void setAndSave(String key, Object value) {
+    set(key, value);
+    save();
   }
 
   public void save() {

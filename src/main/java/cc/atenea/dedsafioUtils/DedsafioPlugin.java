@@ -2,16 +2,16 @@ package cc.atenea.dedsafioUtils;
 
 import cc.atenea.dedsafioUtils.animations.AnimationsManager;
 import cc.atenea.dedsafioUtils.commands.*;
-import cc.atenea.dedsafioUtils.events.EntityResurrectEvent;
-import cc.atenea.dedsafioUtils.events.ItemEventListener;
-import cc.atenea.dedsafioUtils.events.PlayerDeathEvent;
-import cc.atenea.dedsafioUtils.events.PlayerJoinEvent;
+import cc.atenea.dedsafioUtils.events.*;
+import cc.atenea.dedsafioUtils.events.changes.*;
 import cc.atenea.dedsafioUtils.features.BossBarManager;
 import cc.atenea.dedsafioUtils.features.TimeController;
 import cc.atenea.dedsafioUtils.items.*;
 import cc.atenea.dedsafioUtils.items.core.ItemManager;
+import cc.atenea.dedsafioUtils.providers.UserManager;
 import cc.atenea.dedsafioUtils.resources.ResourceManager;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
+import cc.atenea.dedsafioUtils.utilities.MagicGUI;
 import cc.atenea.dedsafioUtils.utilities.YamlDatabase;
 import cc.atenea.dedsafioUtils.utilities.file.FileConfig;
 import dev.jorel.commandapi.CommandAPI;
@@ -26,13 +26,11 @@ import java.util.Map;
 @Getter
 public final class DedsafioPlugin extends JavaPlugin {
   private final Map<String, FileConfig> files;
+
   public AnimationsManager animations;
   public BossBarManager bossBarManager = new BossBarManager();
-  public YamlDatabase db = new YamlDatabase(
-    this,
-    "db.yml",
-    new HashMap<>(Map.of("always-charged-creepers", false))
-  );
+  public UserManager userManager = new UserManager();
+  public YamlDatabase db = new YamlDatabase(this);
   private ResourceManager resourceManager;
   private TimeController timeController;
 
@@ -63,6 +61,8 @@ public final class DedsafioPlugin extends JavaPlugin {
     // Register Managers
     this.resourceManager = new ResourceManager(this);
     this.animations = new AnimationsManager(this);
+    timeController = new TimeController(this);
+    MagicGUI.tryToLoadFor(this);
 
     // Register Command
     CommandAPI.onEnable();
@@ -74,6 +74,17 @@ public final class DedsafioPlugin extends JavaPlugin {
     pluginManager.registerEvents(new PlayerJoinEvent(), this);
     pluginManager.registerEvents(new EntityResurrectEvent(), this);
     pluginManager.registerEvents(new ItemEventListener(), this);
+    pluginManager.registerEvents(new PlayerQuitEvent(), this);
+
+    // Eventos de cambios
+    pluginManager.registerEvents(new DisableNether(), this);
+    pluginManager.registerEvents(new ElectricCreeperSpawn(), this);
+    pluginManager.registerEvents(new VillagersCannotBreed(), this);
+    pluginManager.registerEvents(new ButtonInstantKill(), this);
+    pluginManager.registerEvents(new SpiderWebsOnHit(), this);
+    pluginManager.registerEvents(new BreakWebsSpawnSpiders(), this);
+    pluginManager.registerEvents(new EnderpearlHalfHealth(), this);
+    pluginManager.registerEvents(new DoorsCausesInstantKill(), this);
 
     // Register Items
     ItemManager.registerItem(new EnderBagItem());
@@ -85,20 +96,21 @@ public final class DedsafioPlugin extends JavaPlugin {
     ItemManager.registerItem(new ForkItem());
     ItemManager.registerItem(new ResurrectionSpoonItem());
     ItemManager.registerItem(new SpoonItem());
-
-    timeController = new TimeController(this);
+    ItemManager.registerItem(new MarkerItem(this));
   }
 
   @Override
   public void onDisable() {
     getLogger().info(ChatUtil.translate("&c&lDedsafio-Utils disabled"));
     timeController.stop();
+    MagicGUI.tryToUnload();
   }
 
   public void onReload() {
     files.values().forEach(FileConfig::reload);
     resourceManager.onRefresh();
     animations.reload();
+
   }
 
   public void registerCommands() {
@@ -108,6 +120,8 @@ public final class DedsafioPlugin extends JavaPlugin {
     CommandAPI.registerCommand(TimerCommand.class);
     CommandAPI.registerCommand(ConfigCommand.class);
     CommandAPI.registerCommand(ItemsCommand.class);
+    CommandAPI.registerCommand(FogataCommand.class);
+    CommandAPI.registerCommand(SoulCommand.class);
   }
 
   public FileConfig getFile(String name) {

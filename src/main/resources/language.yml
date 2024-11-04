@@ -35,34 +35,34 @@ tp-command-message:
 
 ruleta:
   green:
-    - "&2&l▪ ɴᴏᴛɪғɪᴄᴀᴄɪᴏɴᴇs:"
+    - "\uEA9F &2&l▪ ɴᴏᴛɪғɪᴄᴀᴄɪᴏɴᴇs:"
     - ""
     - "&a{text}"
   blue:
-    - "&1&l▪ NOTIFICACIONES:"
+    - "\uEA9C &1&l▪ NOTIFICACIONES:"
     - ""
     - "&9{text}"
   red:
-    - "&4&l▪ ᴍᴏᴍᴇɴᴛᴏ ʀᴇᴠɪʟ:"
+    - "\uEAA4 &4&l▪ ᴍᴏᴍᴇɴᴛᴏ ʀᴇᴠɪʟ:"
     - ""
     - "&c{text}"
   purple:
-    - "&5&l▪ ᴅᴇsᴄᴀʟɪғɪᴄᴀᴄɪᴏɴ:"
+    - "\uEAA3 &5&l▪ ᴅᴇsᴄᴀʟɪғɪᴄᴀᴄɪᴏɴ:"
     - ""
     - "&d{text}"
   orange:
-    - "&6&l▪ ᴄᴀᴍʙɪᴏ ᴅᴇ ᴅɪғɪᴄᴜʟᴛᴀᴅ:"
+    - "\uEAA1 &6&l▪ ᴄᴀᴍʙɪᴏ ᴅᴇ ᴅɪғɪᴄᴜʟᴛᴀᴅ:"
     - ""
     - "&e{text}"
   pink:
-    - "&5&l▪ ᴍᴏᴍᴇɴᴛᴏ ɴᴜᴛʀɪᴀ:"
+    - "\uEAA2 &5&l▪ ᴍᴏᴍᴇɴᴛᴏ ɴᴜᴛʀɪᴀ:"
     - ""
     - "&d{text}"
   cyan:
-    - "&3&l▪ CAMBIO DE DIFICULTAD:"
+    - "\uEA9E &3&l▪ ᴍɪsɪᴏɴ ᴅɪᴀʀɪᴀ:"
     - ""
     - "&b{text}"
   yellow:
-    - "&e&l▪ ᴅᴇᴅᴄɪᴄʟᴏᴘᴇᴅɪᴀ:"
+    - "\uEAA5 &e&l▪ ᴅᴇᴅᴄɪᴄʟᴏᴘᴇᴅɪᴀ:"
     - ""
     - "&e{text}"

@@ -6,7 +6,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.conversations.Conversable;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
@@ -45,10 +44,6 @@ public class ChatUtil {
     return array;
   }
 
-  public static boolean isHexColor(String hexColor) {
-    return hexColor.startsWith("#") && hexColor.length() == 7;
-  }
-
   public static List<String> translate(List<String> list) {
     return list.stream().map(ChatUtil::translate).collect(Collectors.toList());
   }
@@ -58,17 +53,11 @@ public class ChatUtil {
   }
 
   public static void sendMessage(CommandSender sender, String[] array) {
-    sender.sendMessage(
-      Arrays.stream(array).map(ChatUtil::translate).collect(Collectors.joining("\n"))
-    );
+    sender.sendMessage(ChatUtil.translate(array));
   }
 
   public static void sendActionBar(Player player, String text) {
     player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(translate(text)));
-  }
-
-  public void sendRawMessage(Conversable conversable, String text) {
-    conversable.sendRawMessage(translate(text));
   }
 
   public static void broadcast(String text) {
@@ -79,13 +68,5 @@ public class ChatUtil {
     Bukkit.broadcastMessage(
       Arrays.stream(text).map(ChatUtil::translate).collect(Collectors.joining("\n"))
     );
-  }
-
-  public void logger(String text) {
-    Bukkit.getConsoleSender().sendMessage(translate(text));
-  }
-
-  public void logger(String[] text) {
-    Bukkit.getConsoleSender().sendMessage(translate(text));
   }
 }

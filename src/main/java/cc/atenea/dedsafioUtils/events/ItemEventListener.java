@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -52,6 +53,22 @@ public class ItemEventListener implements Listener {
       if (!(customItem instanceof Attackable attackableItem)) return;
 
       attackableItem.onAttack(event, player, target);
+    }
+  }
+
+  @EventHandler
+  public void onItemDrop(PlayerDropItemEvent event) {
+    ItemStack item = event.getItemDrop().getItemStack();
+
+    if (ItemManager.isCustomItem(item)) {
+      var meta = item.getItemMeta();
+      if (meta == null) return;
+
+      CustomItem customItem = ItemManager.getItem(item.getType(), meta.getCustomModelData());
+      if (customItem == null) return;
+      if (!(customItem instanceof Clickable clickableItem)) return;
+
+      clickableItem.onDropItem(event);
     }
   }
 }

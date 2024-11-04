@@ -5,11 +5,11 @@ on-totem-use:
 
 on-join:
   enabled: true
-  message: "\uE974 &2{player} se ha conectado"
+  message: "{r-color} &2{player} se ha conectado"
 
 on-leave:
   enabled: true
-  message: "\uE977 &7{player} se ha desconectado"
+  message: "{r-off} &7{player} se ha desconectado"
 
 # Global Settings
 time-controller:
@@ -38,6 +38,41 @@ death-system:
     after-seconds: 10
     message: "&6&lGG"
 
-# Dedsafio Settings
+changes-settings:
+  enabled: true
+  bypass-permission: "dedsafio.bypass_changes"
+  changes:
+    # Deshabilita el acceso al Nether
+    disable-nether: true
+    # Siempre spawnearán creepers eléctricos
+    always-spawn-electric-creepers: true
+    # Si pulsas un botón, te hará insta-kill
+    button-instant-kill: true
+    # Los aldeanos no podrán reproducirse
+    villagers-cannot-breed: true
+    # Cada vez que una araña te pegue, te pondrá una telaraña en los pies
+    spider-webs-on-hit: true
+    # Al romper una telaraña aparecerán arañas venenosas
+    break-webs-spawn-poisonous-spiders: true
+    # Al usar una Ender Pearl, pierdes la mitad de tu vida
+    enderpearl-half-health: true
+    # Usar puertas te causa insta-kill
+    using-doors-causes-instant-kill: true
+    # Los piglins dropean pepitas de oro
+    piglins-drop-gold-nuggets: true
+    # Los golems de hierro fueron reemplazados por wardens
+    iron-golems-replaced-by-wardens: true
 
-charged-creepers: true
+unicodes:
+  announce_blue: "\uEA9C"
+  announce_color: "\uEA9D"
+  announce_cyan: "\uEA9E"
+  announce_green: "\uEA9F"
+  announce_off: "\uEAA0"
+  announce_orange: "\uEAA1"
+  announce_pink: "\uEAA2"
+  announce_purple: "\uEAA3"
+  announce_red: "\uEAA4"
+  announce_yellow: "\uEAA5"
+  white-screen: "\uEAA7"
+  revive-menu: "\uEAA8"

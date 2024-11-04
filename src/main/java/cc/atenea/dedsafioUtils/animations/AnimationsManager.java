@@ -4,18 +4,15 @@ import cc.atenea.dedsafioUtils.DedsafioPlugin;
 import cc.atenea.dedsafioUtils.resources.types.AnimationResource;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scoreboard.*;
 
 import java.util.Collection;
 import java.util.List;
 
 public class AnimationsManager {
-  private final DedsafioPlugin plugin;
-  private final AnimationResource animationResource;
-
   public static List<String> MUERTE;
   public static List<String> RULETA_RED;
   public static List<String> RULETA_ORANGE;
@@ -25,10 +22,14 @@ public class AnimationsManager {
   public static List<String> RULETA_PURPLE;
   public static List<String> RULETA_PINK;
   public static List<String> RULETA_CYAN;
+  public static List<String> NUTRIA;
+  public static List<String> REVIIL;
+  private final DedsafioPlugin plugin;
+  private final AnimationResource animationResource;
 
-  public AnimationsManager(DedsafioPlugin dedsafioPlugin) {
-    this.plugin = dedsafioPlugin;
-    this.animationResource = new AnimationResource(dedsafioPlugin);
+  public AnimationsManager(DedsafioPlugin plugin) {
+    this.plugin = plugin;
+    this.animationResource = new AnimationResource(plugin);
 
     reload();
   }
@@ -43,6 +44,8 @@ public class AnimationsManager {
     RULETA_PINK = animationResource.getAnimation("pink");
     RULETA_CYAN = animationResource.getAnimation("cyan");
     MUERTE = animationResource.getAnimation("muerte");
+    NUTRIA = animationResource.getAnimation("nutria");
+    REVIIL = animationResource.getAnimation("reviil");
   }
 
   public void playAnimation(Player player, Animations animation, String positionType, String sound) {
@@ -167,6 +170,8 @@ public class AnimationsManager {
       case RuletaPink -> RULETA_PINK;
       case RuletaCyan -> RULETA_CYAN;
       case Muerte -> MUERTE;
+      case Nutria -> NUTRIA;
+      case Reviil -> REVIIL;
     };
   }
 

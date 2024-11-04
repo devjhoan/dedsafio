@@ -38,6 +38,33 @@ public class ConfigResource extends Resource {
   public static String DeathSystemBanMessage;
   public static int DeathSystemBanAfterSeconds;
 
+  public static boolean ChangesEnabled;
+  public static String ChangesBypassPermission;
+
+  public static boolean NetherDisabled;
+  public static boolean AlwaysSpawnElectricCreepers;
+  public static boolean ButtonInstantKill;
+  public static boolean VillagersCannotBreed;
+  public static boolean SpiderWebsOnHit;
+  public static boolean BreakWebsSpawnPoisonousSpiders;
+  public static boolean EnderpearlHalfHealth;
+  public static boolean UsingDoorsCausesInstantKill;
+  public static boolean PiglinsDropGoldNuggets;
+  public static boolean IronGolemsReplacedByWardens;
+
+  public static String AnnounceBlue;
+  public static String AnnounceColor;
+  public static String AnnounceCyan;
+  public static String AnnounceGreen;
+  public static String AnnounceOff;
+  public static String AnnounceOrange;
+  public static String AnnouncePink;
+  public static String AnnouncePurple;
+  public static String AnnounceRed;
+  public static String AnnounceYellow;
+  public static String ReviveMenu;
+  public static String WhiteScreen;
+
   @Override
   public void initialize(DedsafioPlugin dedsafio) {
     FileConfig languageFile = dedsafio.getFile("config");
@@ -74,5 +101,32 @@ public class ConfigResource extends Resource {
     DeathSystemAnimationPosition = languageFile.getString("death-system.animation.position");
     DeathSystemAnimationShowTo = languageFile.getString("death-system.animation.show-to");
     DeathSystemAnimationSound = languageFile.getString("death-system.animation.sound");
+
+    ChangesEnabled = languageFile.getBoolean("changes-settings.enabled");
+    ChangesBypassPermission = languageFile.getString("changes-settings.bypass-permission");
+
+    AnnounceBlue = languageFile.getString("unicodes.announce_blue");
+    AnnounceColor = languageFile.getString("unicodes.announce_color");
+    AnnounceCyan = languageFile.getString("unicodes.announce_cyan");
+    AnnounceGreen = languageFile.getString("unicodes.announce_green");
+    AnnounceOff = languageFile.getString("unicodes.announce_off");
+    AnnounceOrange = languageFile.getString("unicodes.announce_orange");
+    AnnouncePink = languageFile.getString("unicodes.announce_pink");
+    AnnouncePurple = languageFile.getString("unicodes.announce_purple");
+    AnnounceRed = languageFile.getString("unicodes.announce_red");
+    AnnounceYellow = languageFile.getString("unicodes.announce_yellow");
+    WhiteScreen = languageFile.getString("unicodes.white-screen");
+    ReviveMenu = languageFile.getString("unicodes.revive-menu");
+
+    NetherDisabled = languageFile.getBoolean("changes-settings.changes.disable-nether");
+    AlwaysSpawnElectricCreepers = languageFile.getBoolean("changes-settings.changes.always-spawn-electric-creepers");
+    ButtonInstantKill = languageFile.getBoolean("changes-settings.changes.button-instant-kill");
+    VillagersCannotBreed = languageFile.getBoolean("changes-settings.changes.villagers-cannot-breed");
+    SpiderWebsOnHit = languageFile.getBoolean("changes-settings.changes.spider-webs-on-hit");
+    BreakWebsSpawnPoisonousSpiders = languageFile.getBoolean("changes-settings.changes.break-webs-spawn-poisonous-spiders");
+    EnderpearlHalfHealth = languageFile.getBoolean("changes-settings.changes.enderpearl-half-health");
+    UsingDoorsCausesInstantKill = languageFile.getBoolean("changes-settings.changes.using-doors-causes-instant-kill");
+    PiglinsDropGoldNuggets = languageFile.getBoolean("changes-settings.changes.piglins-drop-gold-nuggets");
+    IronGolemsReplacedByWardens = languageFile.getBoolean("changes-settings.changes.iron-golems-replaced-by-wardens");
   }
 }

@@ -13,7 +13,11 @@ public class PlayerQuitEvent implements Listener {
     event.setQuitMessage(null);
 
     if (ConfigResource.LeaveMessageEnabled) {
-      ChatUtil.broadcast(ConfigResource.LeaveMessage.replace("{player}", player.getName()));
+      ChatUtil.broadcast(
+        ConfigResource.LeaveMessage
+          .replace("{player}", player.getName())
+          .replace("{r-off}", ConfigResource.AnnounceOff)
+      );
     }
   }
 }

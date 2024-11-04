@@ -9,6 +9,7 @@ public class ItemSettings {
   public final String itemId;
   public int customModelData;
   public String displayName;
+  public boolean privateItem;
   public List<String> lore;
 
   public ItemSettings(Material material, String name) {
@@ -17,6 +18,7 @@ public class ItemSettings {
     this.displayName = "";
     this.itemId = name.toLowerCase().replaceAll(" ", "_");
     this.lore = List.of();
+    this.privateItem = false;
   }
 
   public ItemSettings setItemId(int customModelData) {
@@ -31,6 +33,11 @@ public class ItemSettings {
 
   public ItemSettings setLore(List<String> lore) {
     this.lore = lore;
+    return this;
+  }
+
+  public ItemSettings setPrivateItem(boolean privateItem) {
+    this.privateItem = privateItem;
     return this;
   }
 }

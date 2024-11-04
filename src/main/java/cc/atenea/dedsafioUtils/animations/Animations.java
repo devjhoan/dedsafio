@@ -9,5 +9,7 @@ public enum Animations {
   RuletaPurple,
   RuletaPink,
   RuletaCyan,
-  Muerte
+  Muerte,
+  Nutria,
+  Reviil
 }

@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 public class PortableGoldenAnvilItem extends CustomItem implements Clickable {
@@ -21,8 +22,14 @@ public class PortableGoldenAnvilItem extends CustomItem implements Clickable {
   @Override
   public void onRightClick(PlayerInteractEvent event) {
     Player player = event.getPlayer();
-    boolean isArmorFullyRepaired = true;
+    EquipmentSlot handUsed = event.getHand();
+    ItemStack item = handUsed == EquipmentSlot.OFF_HAND
+      ? player.getInventory().getItemInOffHand()
+      : player.getInventory().getItemInMainHand();
 
+    if (handUsed == null) return;
+
+    boolean isArmorFullyRepaired = true;
     for (ItemStack itemStack : player.getInventory().getArmorContents()) {
       if (itemStack != null && itemStack.getDurability() > 0) {
         isArmorFullyRepaired = false;
@@ -35,10 +42,13 @@ public class PortableGoldenAnvilItem extends CustomItem implements Clickable {
       return;
     }
 
-    ItemStack item = player.getInventory().getItemInMainHand();
-    player.getInventory().remove(item);
-    player.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+    if (item.getAmount() > 1) {
+      item.setAmount(item.getAmount() - 1);
+    } else {
+      player.getInventory().setItem(handUsed, null);
+    }
 
+    player.playSound(player, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
     for (ItemStack itemStack : player.getInventory().getArmorContents()) {
       if (itemStack != null) {
         itemStack.setDurability((short) 0);
