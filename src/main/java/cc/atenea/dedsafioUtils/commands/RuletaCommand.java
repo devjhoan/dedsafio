@@ -2,6 +2,7 @@ package cc.atenea.dedsafioUtils.commands;
 
 import cc.atenea.dedsafioUtils.DedsafioPlugin;
 import cc.atenea.dedsafioUtils.animations.Animations;
+import cc.atenea.dedsafioUtils.resources.types.ConfigResource;
 import cc.atenea.dedsafioUtils.resources.types.LanguageResource;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
 import dev.jorel.commandapi.annotations.Command;
@@ -44,8 +45,19 @@ public class RuletaCommand {
     }
 
     String[] messageToDisplay = Arrays.stream(LanguageResource.MESSAGE_RULETA_COLORS.get(color))
-      .map(line -> line.replace("{text}", message))
-      .toArray(String[]::new);
+      .map(line -> line
+        .replace("{text}", message)
+        .replace("{r-color}", ConfigResource.AnnounceColor)
+        .replace("{r-off}", ConfigResource.AnnounceOff)
+        .replace("{r-green}", ConfigResource.AnnounceGreen)
+        .replace("{r-blue}", ConfigResource.AnnounceBlue)
+        .replace("{r-red}", ConfigResource.AnnounceRed)
+        .replace("{r-purple}", ConfigResource.AnnouncePurple)
+        .replace("{r-orange}", ConfigResource.AnnounceOrange)
+        .replace("{r-pink}", ConfigResource.AnnouncePink)
+        .replace("{r-cyan}", ConfigResource.AnnounceCyan)
+        .replace("{r-yellow}", ConfigResource.AnnounceYellow)
+      ).toArray(String[]::new);
 
     for (Player player : players) {
       var plugin = DedsafioPlugin.getInstance();
