@@ -53,7 +53,7 @@ public class MarkerItem extends CustomItem implements Clickable {
     if (event.getClickedBlock() != null) {
       Location pos1 = event.getClickedBlock().getLocation();
       saveLocationToItem(event, pos1, pos1Key);
-      ChatUtil.sendMessage(event.getPlayer(), "&aSegunda posición definida en: &7" + pos1.getBlockX() + ", " + pos1.getBlockY() + ", " + pos1.getBlockZ());
+      ChatUtil.sendMessage(event.getPlayer(), "&aPrimera posición definida en: &7" + pos1.getBlockX() + ", " + pos1.getBlockY() + ", " + pos1.getBlockZ());
     }
   }
 
