@@ -2,6 +2,7 @@ package cc.atenea.dedsafioUtils.events;
 
 import cc.atenea.dedsafioUtils.DedsafioPlugin;
 import cc.atenea.dedsafioUtils.animations.Animations;
+import cc.atenea.dedsafioUtils.providers.User;
 import cc.atenea.dedsafioUtils.resources.types.ConfigResource;
 import cc.atenea.dedsafioUtils.utilities.ChatUtil;
 import net.md_5.bungee.api.ChatMessageType;
@@ -47,6 +48,9 @@ public class PlayerDeathEvent implements Listener {
 
     deathLocations.put(player, player.getLocation());
     player.setGameMode(GameMode.SPECTATOR);
+
+    User user = plugin.userManager.getUser(player);
+    user.setDead(true);
 
     if (Objects.equals(ConfigResource.DeathSystemAnimationShowTo, "all")) {
       for (Player p : plugin.getServer().getOnlinePlayers()) {

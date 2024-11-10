@@ -7,34 +7,31 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class User {
   private final DedsafioPlugin plugin = DedsafioPlugin.getInstance();
+  private FileConfiguration userConfig;
   private final File userFile;
   private final UUID uuid;
-  private FileConfiguration userConfig;
 
   public User(UUID uuid) {
     File dataFolder = plugin.getDataFolder();
 
-    this.uuid = uuid;
     this.userFile = new File(dataFolder + File.separator + "data", uuid + ".yml");
+    this.uuid = uuid;
 
     if (!userFile.exists()) {
       registerUserFile();
     } else {
       this.userConfig = YamlConfiguration.loadConfiguration(userFile);
     }
+
+    validateUserProfile();
   }
 
   public boolean hasSoul() {
     return this.userConfig.getBoolean("soul", false);
-  }
-
-  public List<String> soulUsedWith() {
-    return this.userConfig.getStringList("soulUsedWith");
   }
 
   public void setSoul(boolean hasSoul) {
@@ -42,12 +39,31 @@ public class User {
     save();
   }
 
-  public void addSoulUsedWith(String name) {
-    List<String> list = this.userConfig.getStringList("soulUsedWith");
-    list.add(name);
+  public boolean isDead() {
+    return this.userConfig.getBoolean("dead", false);
+  }
 
-    this.userConfig.set("soulUsedWith", list);
+  public void addRevivedTimes() {
+    this.userConfig.set("revived-times", getRevivedTimes() + 1);
     save();
+  }
+
+  public int getRevivedTimes() {
+    return this.userConfig.getInt("revived-times", 0);
+  }
+
+  public void setDead(boolean dead) {
+    this.userConfig.set("dead", dead);
+    save();
+  }
+
+  public void setAlertRevive(boolean alertRevive) {
+    this.userConfig.set("alert-revive", alertRevive);
+    save();
+  }
+
+  public boolean getAlertRevive() {
+    return this.userConfig.getBoolean("alert-revive", false);
   }
 
   private void registerUserFile() {
@@ -63,8 +79,28 @@ public class User {
     }
 
     userConfig = YamlConfiguration.loadConfiguration(userFile);
-    userConfig.set("soul", true);
-    userConfig.set("soulUsedWith", new ArrayList<>());
+  }
+
+  public void validateUserProfile() {
+    if (!userConfig.isList("soulUsedWith")) {
+      userConfig.set("soulUsedWith", new ArrayList<>());
+    }
+
+    if (!userConfig.isBoolean("soul")) {
+      userConfig.set("soul", true);
+    }
+
+    if (!userConfig.isBoolean("dead")) {
+      userConfig.set("dead", false);
+    }
+
+    if (!userConfig.isInt("revived-times")) {
+      userConfig.set("revived-times", 0);
+    }
+
+    if (!userConfig.isBoolean("alert-revive")) {
+      userConfig.set("alert-revive", false);
+    }
 
     save();
   }
@@ -75,5 +111,10 @@ public class User {
     } catch (IOException e) {
       this.plugin.getLogger().severe("Failed to save user file: " + e.getMessage());
     }
+  }
+
+  public UUID getUuid() {
+    plugin.getLogger().info("UUID: " + uuid);
+    return uuid;
   }
 }
