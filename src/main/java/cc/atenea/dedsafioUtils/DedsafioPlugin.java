@@ -25,18 +25,13 @@ import java.util.Map;
 
 @Getter
 public final class DedsafioPlugin extends JavaPlugin {
-  private final Map<String, FileConfig> files;
-
-  public AnimationsManager animations;
+  private final Map<String, FileConfig> files = new HashMap<>();
   public BossBarManager bossBarManager = new BossBarManager();
-  public UserManager userManager = new UserManager();
   public YamlDatabase db = new YamlDatabase(this);
+  public AnimationsManager animations;
+  public UserManager userManager;
   private ResourceManager resourceManager;
   private TimeController timeController;
-
-  public DedsafioPlugin() {
-    this.files = new HashMap<>();
-  }
 
   public static DedsafioPlugin getInstance() {
     return getPlugin(DedsafioPlugin.class);
@@ -44,8 +39,11 @@ public final class DedsafioPlugin extends JavaPlugin {
 
   @Override
   public void onLoad() {
-    // Plugin load logic
-    CommandAPI.onLoad(new CommandAPIBukkitConfig(this).silentLogs(true));
+    CommandAPI.onLoad(
+      new CommandAPIBukkitConfig(this)
+        .silentLogs(true)
+        .setNamespace("dedsafio")
+    );
   }
 
   @Override
@@ -60,8 +58,9 @@ public final class DedsafioPlugin extends JavaPlugin {
 
     // Register Managers
     this.resourceManager = new ResourceManager(this);
+    this.timeController = new TimeController(this);
     this.animations = new AnimationsManager(this);
-    timeController = new TimeController(this);
+    this.userManager = new UserManager(this);
     MagicGUI.tryToLoadFor(this);
 
     // Register Command
@@ -98,6 +97,7 @@ public final class DedsafioPlugin extends JavaPlugin {
     ItemManager.registerItem(new ForkItem());
     ItemManager.registerItem(new ResurrectionSpoonItem());
     ItemManager.registerItem(new SpoonItem());
+    ItemManager.registerItem(new SpawnStickItem());
     ItemManager.registerItem(new MarkerItem(this));
   }
 
@@ -112,7 +112,7 @@ public final class DedsafioPlugin extends JavaPlugin {
     files.values().forEach(FileConfig::reload);
     resourceManager.onRefresh();
     animations.reload();
-
+    userManager.reload();
   }
 
   public void registerCommands() {
@@ -124,6 +124,8 @@ public final class DedsafioPlugin extends JavaPlugin {
     CommandAPI.registerCommand(ItemsCommand.class);
     CommandAPI.registerCommand(FogataCommand.class);
     CommandAPI.registerCommand(SoulCommand.class);
+    CommandAPI.registerCommand(ReviveCommand.class);
+    CommandAPI.registerCommand(EonCommand.class);
   }
 
   public FileConfig getFile(String name) {
