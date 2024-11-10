@@ -69,4 +69,8 @@ public class ChatUtil {
       Arrays.stream(text).map(ChatUtil::translate).collect(Collectors.joining("\n"))
     );
   }
+
+  public static void sendTitle(Player player, String title, String subtitle, int fadeIn, int stay, int fadeOut) {
+    player.sendTitle(translate(title), translate(subtitle), fadeIn, stay, fadeOut);
+  }
 }
