@@ -1,5 +1,5 @@
 name: dedsafio
-version: '1.0-SNAPSHOT'
+version: '1.0.4-ALPHA'
 main: cc.atenea.dedsafioUtils.DedsafioPlugin
 api-version: '1.13'
 authors: [ devjhoan ]

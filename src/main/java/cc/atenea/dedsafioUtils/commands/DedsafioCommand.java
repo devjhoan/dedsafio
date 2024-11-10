@@ -23,4 +23,9 @@ public class DedsafioCommand {
     DedsafioPlugin.getInstance().onReload();
     ChatUtil.sendMessage(sender, LanguageResource.DEDSAFIO_COMMAND_MESSAGE_RELOAD);
   }
+
+  @Subcommand("version")
+  public static void version(CommandSender sender) {
+    ChatUtil.sendMessage(sender, "&7Version: &f" + DedsafioPlugin.getInstance().getDescription().getVersion());
+  }
 }

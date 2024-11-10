@@ -23,7 +23,7 @@ public class PlayerJoinEvent implements Listener {
     }
 
     if (userProfile.getAlertRevive()) {
-      ChatUtil.broadcast("&3✧ &b&l" + player.getName() + " &3&lha sido resucitado! ✧");
+      ChatUtil.broadcast("&3✧ &b&l" + player.getName() + " &3&lha resucitado! ✧");
       userProfile.setAlertRevive(false);
     }
 

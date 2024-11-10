@@ -53,7 +53,6 @@ public class UserManager {
             users.put(uuid, new User(uuid));
           }
         } catch (IllegalArgumentException e) {
-          System.out.println(e);
           plugin.getLogger().severe("Archivo en data/ no es un UUID válido: " + file.getName());
         }
       }
