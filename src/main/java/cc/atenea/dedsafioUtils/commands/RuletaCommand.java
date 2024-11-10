@@ -72,7 +72,7 @@ public class RuletaCommand {
           sendRuletaMessage(messageToDisplay, player, color.equals("red") ? 15 : 17);
         }, 15 * 20L);
 
-        return;
+        continue;
       }
 
       sendRuletaMessage(messageToDisplay, player, 15);
